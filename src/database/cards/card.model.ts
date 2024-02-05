@@ -1,4 +1,4 @@
-import { getModelForClass, modelOptions, prop, Ref } from "@typegoose/typegoose"
+import { getModelForClass, modelOptions, prop, Ref, ReturnModelType } from "@typegoose/typegoose"
 import { CardTag } from "../card_tags/card_tag.model"
 import { CardClass } from "../card_class/card_class.model"
 
@@ -30,10 +30,6 @@ export class Card {
 
   @prop({ required: true, ref: CardTag })
   public tags: Ref<CardTag>[]
-
-  public static async parseAndCreate(this: ReturnModelType<typeof CardTag>, CardTag) {
-    return await this.create(CardTag)
-  }
 
 }
 

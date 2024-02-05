@@ -1,4 +1,4 @@
-import { getModelForClass, modelOptions, mongoose, prop, ReturnModelType } from "@typegoose/typegoose"
+import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose"
 
 @modelOptions({ schemaOptions: { collection: 'card_tags' } })
 export class CardTag {
@@ -9,9 +9,6 @@ export class CardTag {
   @prop() 
   description: string
 
-  public static async parseAndCreate(this: ReturnModelType<typeof CardTag>, CardTag) {
-    return await this.create(CardTag)
-  }
 }
 
 export const CardTagModel = getModelForClass(CardTag)

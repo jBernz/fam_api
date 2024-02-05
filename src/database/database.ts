@@ -1,12 +1,14 @@
 import Mongoose from "mongoose"
-import featureTreesJson from '../../data/feature_trees.json'
-import featuresJson from '../../data/features.json'
+import cardsJson from '../../data/cards.json'
+import cardClassesJson from '../../data/card_classes.json'
+import { CardModel } from "./creatures/creature.model"
+import { CardClassModel } from "./card_class/card_class.model"
 
 let database: Mongoose.Connection
 
-export const connect = () => {
+export const connectDB = () => {
 
-  const uri = "mongodb://localhost:27017/test"
+  const uri = process.env.MONGO_URI
  
   if (database) {
     return
@@ -29,7 +31,7 @@ export const connect = () => {
 
 }
 
-export const disconnect = () => {  
+export const disconnectDB = () => {  
   if (!database) {
     return
   }  
@@ -38,11 +40,11 @@ export const disconnect = () => {
 
 const createData = async () => {
 
-  // for (let featureTree of featureTreesJson) {
-  //   await FeatureTreeModel.parseAndCreate(featureTree)
+  // for (let card of cardsJson) {
+  //   await CardModel.create(card)
   // }
-  // for (let feature of featuresJson) {
-  //   await FeatureModel.parseAndCreate(feature)
+  // for (let cardClass of cardClassesJson) {
+  //   await CardClassModel.create(cardClass)
   // }
 
 }

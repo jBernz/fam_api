@@ -1,11 +1,13 @@
-import express from "express"
-import { connect } from "./database/database"
+import express from 'express'
+import {Express} from 'express-serve-static-core'
 
-const app = express()
-const port = 5002
+import cards from "./api/cards/router"
 
-connect()
-
-app.listen(port, () => {
-  console.log(`Server started on http://localhost:${port}`);
-})
+export async function createServer(): Promise<Express> {
+  const server = express()
+  server.use('/cards', cards)
+  server.get('/health', (req, res) => {
+    res.send('Healthy')
+  })
+  return server
+}

@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Rip and Tear",
+        "class": "Fang",
+        "description": "Until it's done"
+    },
+    {
+        "name": "Venomous Fangs",
+        "class": "Fang",
+        "description": "Poison"
+    },
+    {
+        "name": "Laceration",
+        "class": "Claw",
+        "description": "Ouch"
+    }
+]

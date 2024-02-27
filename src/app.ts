@@ -6,8 +6,8 @@ import {createServer} from './server'
 dotenv.config()
 
 const port = process.env.PORT
-
-createServer()
+connectDB()
+  .then( () => createServer())
   .then(server => {
     server.listen(port, () => {
       console.info(`Listening on http://localhost:${port}`)

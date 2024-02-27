@@ -12,24 +12,21 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CardModel = exports.Card = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
 const card_tag_model_1 = require("../card_tags/card_tag.model");
-const card_class_model_1 = require("../card_class/card_class.model");
+const card_family_model_1 = require("../card_families/card_family.model");
 let Card = class Card {
-    static async parseAndCreate(CardTag) {
-        return await this.create(CardTag);
-    }
 };
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
     __metadata("design:type", String)
 ], Card.prototype, "name", void 0);
 __decorate([
-    (0, typegoose_1.prop)(),
+    (0, typegoose_1.prop)({ required: true }),
     __metadata("design:type", Number)
 ], Card.prototype, "memory", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ required: true, ref: card_class_model_1.CardClass }),
+    (0, typegoose_1.prop)({ ref: card_family_model_1.Family }),
     __metadata("design:type", Object)
-], Card.prototype, "class", void 0);
+], Card.prototype, "family", void 0);
 __decorate([
     (0, typegoose_1.prop)(),
     __metadata("design:type", Number)
@@ -47,7 +44,7 @@ __decorate([
     __metadata("design:type", String)
 ], Card.prototype, "description", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ required: true, ref: card_tag_model_1.CardTag }),
+    (0, typegoose_1.prop)({ ref: card_tag_model_1.CardTag }),
     __metadata("design:type", Array)
 ], Card.prototype, "tags", void 0);
 Card = __decorate([

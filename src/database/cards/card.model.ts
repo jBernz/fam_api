@@ -1,6 +1,6 @@
-import { getModelForClass, modelOptions, prop, Ref, ReturnModelType } from "@typegoose/typegoose"
-import { CardTag } from "../card_tags/card_tag.model"
-import { CardClass } from "../card_class/card_class.model"
+import { getModelForClass, modelOptions, prop, Ref } from "@typegoose/typegoose"
+import { Tag } from "../tags/tag.model"
+import { Family } from "../families/family.model"
 
 @modelOptions({ schemaOptions: { 
   discriminatorKey: 'type'
@@ -10,11 +10,11 @@ export class Card {
   @prop({ required: true }) 
   public name!: string
 
-  @prop() 
+  @prop({ required: true }) 
   public memory!: number
 
-  @prop({ required: true, ref: CardClass })
-  public class: Ref<CardClass>
+  @prop({ ref: Family })
+  public family: Ref<Family>
 
   @prop() 
   public vigor_required!: number
@@ -28,8 +28,8 @@ export class Card {
   @prop() 
   public description: string
 
-  @prop({ required: true, ref: CardTag })
-  public tags: Ref<CardTag>[]
+  @prop({ ref: Tag })
+  public tags: Ref<Tag>[]
 
 }
 

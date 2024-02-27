@@ -1,33 +1,43 @@
 import Mongoose from "mongoose"
+import { MongoMemoryServer } from "mongodb-memory-server"
+
 import cardsJson from '../../data/cards.json'
 import cardClassesJson from '../../data/card_classes.json'
 import { CardModel } from "./creatures/creature.model"
-import { CardClassModel } from "./card_class/card_class.model"
+import { FamilyModel } from "./families/family.model"
 
 let database: Mongoose.Connection
 
-export const connectDB = () => {
+export const connectDB = async () => {
 
-  const uri = process.env.MONGO_URI
+  let uri
+
+  console.log(process.env.MONGO_URI)
+
+  if(process.env.MONGO_URI === 'in_memory'){
+    const mongod = await MongoMemoryServer.create()
+    uri = mongod.getUri()
+  } else {
+    uri = process.env.MONGO_URI
+  }
  
   if (database) {
     return
   }
+  try{
+    await Mongoose.connect(uri)
+  } catch(e) {
+    console.log(e)
+  }
 
-  Mongoose.connect(uri)
-  database = Mongoose.connection;
+  console.log('Connected to database')
+  database = Mongoose.connection
+  
 
-  database.once("open", async () => {
-    console.log("Connected to database")
-    await database.db.dropDatabase()
-    console.log("Repopulating data...")
-    await createData()
-    console.log("Repopulated data")
-  })
-
-  database.on("error", () => {
-    console.log("Error connecting to database")
-  })
+  //await database.db.dropDatabase()
+  // console.log("Repopulating data...")
+  // await createData()
+  // console.log("Repopulated data")
 
 }
 

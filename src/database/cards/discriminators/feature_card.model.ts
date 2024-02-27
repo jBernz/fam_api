@@ -1,5 +1,6 @@
 import { getDiscriminatorModelForClass, prop } from "@typegoose/typegoose"
 import { Card, CardModel } from "../card.model"
+import { CardType } from "fam-types"
 
 export class FeatureCard extends Card {
 
@@ -12,4 +13,4 @@ export class FeatureCard extends Card {
 
 }
 
-export const FeatureCardModel = getDiscriminatorModelForClass(CardModel, FeatureCard)
+export const FeatureCardModel = getDiscriminatorModelForClass(CardModel, FeatureCard, CardType.Feature)

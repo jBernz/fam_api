@@ -1,21 +1,19 @@
 import { prop, getDiscriminatorModelForClass } from "@typegoose/typegoose"
 import { Card, CardModel } from "../card.model"
+import { CardType, TargetType } from "fam-types"
 
 export class AttackCard extends Card {
 
   @prop({ required: true })
   public action_cost: number
 
-  @prop({ required: true })
+  @prop({ required: false })
   public range!: number
-
-  @prop({ required: true })
-  public melee!: boolean
 
   @prop({ required: true })
   public target!: TargetType
 
-  @prop({ required: true })
+  @prop({ required: false })
   public miss_damage!: number
 
   @prop({ required: true })
@@ -28,4 +26,4 @@ export class AttackCard extends Card {
   public critical_threshold!: number
 
 }
-export const AttackCardModel = getDiscriminatorModelForClass(CardModel, AttackCard)
+export const AttackCardModel = getDiscriminatorModelForClass(CardModel, AttackCard, CardType.Attack)

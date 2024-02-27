@@ -24,10 +24,6 @@ __decorate([
 ], AttackCard.prototype, "range", void 0);
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
-    __metadata("design:type", Boolean)
-], AttackCard.prototype, "melee", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ required: true }),
     __metadata("design:type", Number)
 ], AttackCard.prototype, "target", void 0);
 __decorate([

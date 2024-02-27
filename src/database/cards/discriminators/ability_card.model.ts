@@ -1,5 +1,6 @@
 import { prop, getDiscriminatorModelForClass } from "@typegoose/typegoose"
 import { Card, CardModel } from "../card.model"
+import { CardType, SaveType, TargetType } from "fam-types"
 
 export class AbilityCard extends Card {
   
@@ -10,15 +11,9 @@ export class AbilityCard extends Card {
   range!: number
 
   @prop({ required: true })
-  melee!: boolean
-
-  @prop({ required: true })
   target!: TargetType
 
-  @prop({ required: true })
-  save!: boolean
-
-  @prop()
+  @prop({ type: String })
   save_target?: SaveType[]
 
   @prop()
@@ -26,4 +21,4 @@ export class AbilityCard extends Card {
 
 }
 
-export const AbilityCardModel = getDiscriminatorModelForClass(CardModel, AbilityCard)
+export const AbilityCardModel = getDiscriminatorModelForClass(CardModel, AbilityCard, CardType.Ability)

@@ -1,21 +1,23 @@
 {
-  "name": "towers_and_titans",
+  "name": "fang_and_maw_api",
   "version": "1.0.0",
-  "description": "tabletop role playing game system",
+  "description": "api for fang and maw TTRPG",
   "main": "src/server.ts",
   "scripts": {
     "start": "node --inspect=5858 -r ts-node/register ./src/app.ts",
     "dev": "nodemon",
     "build": "tsc",
     "script": "cd src/scripts && ts-node",
-    "test:unit": "ENV_FILE=./.env.test jest"
+    "test:unit": "DOTENV_CONFIG_PATH=./.env.test jest --setupFiles dotenv/config"
   },
   "author": "justin bernegger",
   "license": "ISC",
   "dependencies": {
     "@typegoose/typegoose": "^9.12.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "express": "^4.18.2",
+    "fam-types": "file:../fam-types",
     "mongoose": "~6.6.0",
     "ts-json-validator": "^0.7.1"
   },
@@ -26,6 +28,7 @@
     "@types/node": "^18.11.9",
     "@types/supertest": "^6.0.2",
     "jest": "^29.7.0",
+    "mongodb-memory-server": "^9.1.6",
     "nodemon": "^2.0.20",
     "supertest": "^6.3.4",
     "ts-jest": "^29.1.2",

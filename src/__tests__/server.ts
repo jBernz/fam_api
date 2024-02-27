@@ -12,6 +12,7 @@ beforeAll(async () => {
 describe('GET /health', () => {
   it('responds with \'Healthy\'', async () => {
     let res = await request(server).get('/health')
+    await expect(res.status).toBe(200)
     await expect(res.text).toBe('Healthy')
   })
 })

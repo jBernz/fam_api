@@ -12,9 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CardTagModel = exports.CardTag = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
 let CardTag = class CardTag {
-    static async parseAndCreate(CardTag) {
-        return await this.create(CardTag);
-    }
 };
 __decorate([
     (0, typegoose_1.prop)({ required: true, unique: true }),

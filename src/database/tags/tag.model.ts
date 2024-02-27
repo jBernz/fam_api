@@ -1,7 +1,7 @@
 import { getModelForClass, modelOptions, prop } from "@typegoose/typegoose"
 
-@modelOptions({ schemaOptions: { collection: 'card_tags' } })
-export class CardClass{
+@modelOptions({ schemaOptions: { collection: 'tags' } })
+export class Tag {
   
   @prop({ required: true, unique: true }) 
   name: string
@@ -11,4 +11,4 @@ export class CardClass{
 
 }
 
-export const CardClassModel = getModelForClass(CardClass)
+export const TagModel = getModelForClass(Tag)

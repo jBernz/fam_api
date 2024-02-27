@@ -24,16 +24,8 @@ __decorate([
 ], AbilityCard.prototype, "range", void 0);
 __decorate([
     (0, typegoose_1.prop)({ required: true }),
-    __metadata("design:type", Boolean)
-], AbilityCard.prototype, "melee", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ required: true }),
     __metadata("design:type", Number)
 ], AbilityCard.prototype, "target", void 0);
-__decorate([
-    (0, typegoose_1.prop)({ required: true }),
-    __metadata("design:type", Boolean)
-], AbilityCard.prototype, "save", void 0);
 __decorate([
     (0, typegoose_1.prop)(),
     __metadata("design:type", Array)

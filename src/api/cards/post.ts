@@ -8,7 +8,8 @@ export default async function postCard(req: Request, res: Response, next) {
 
     let {_id} = req.body
 
-    if(_id === undefined){
+    if(_id === undefined || _id.startsWith('$phID')){
+      delete req.body._id
       _id = (await model.create(req.body))._id
     } else {
       await model.findOneAndUpdate(req.body._id, req.body, {new: true})

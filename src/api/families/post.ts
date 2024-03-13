@@ -5,7 +5,8 @@ export default async function postFamily(req: Request, res: Response, next) {
   try {
     let response:Family
     const {_id, name, description} = req.body
-    if(_id === undefined){
+    if(_id === undefined || _id.startsWith('$phID')){
+      delete req.body._id
       const newDoc = await FamilyModel.create({name, description})
       response = await FamilyModel.findOne({_id: newDoc._id})
       .select('_id name description')

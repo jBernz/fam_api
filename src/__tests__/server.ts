@@ -1,18 +1,37 @@
 import request from 'supertest'
 import {Express} from 'express-serve-static-core'
+import { Router } from 'express'
+import sinon from 'ts-sinon'
 
 import {createServer} from '../server'
 
-let server: Express
+describe('createServer', () => {
 
-beforeAll(async () => {
-  server = await createServer()
-})
+  let server: Express
 
-describe('GET /health', () => {
-  it('responds with \'Healthy\'', async () => {
+  afterEach(async () => {
+    const httpServer = server.listen(process.env.PORT, () => {})
+    httpServer.close()
+  })
+
+  it('creates a server that responds with \'Healthy\'', async () => {
+    server = createServer({})
     let res = await request(server).get('/health')
-    await expect(res.status).toBe(200)
-    await expect(res.text).toBe('Healthy')
+    expect(res.status).toBe(200)
+    expect(res.text).toBe('Healthy')
+  })
+
+  it('accepts routers', async () => {
+    const mockGet = sinon.spy((_,res)=>{
+      res.send('')
+    })
+    const router = Router()
+    router.get('/', mockGet)
+
+    server = createServer({'/path': router})
+
+    const res = await request(server).get('/path/')
+    expect(mockGet.calledOnce).toBe(true)
+    expect(res.status).toBe(200)
   })
 })

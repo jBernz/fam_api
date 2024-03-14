@@ -1,10 +1,10 @@
 import Mongoose from "mongoose"
 import { MongoMemoryServer } from "mongodb-memory-server"
 
-import cardsJson from '../../data/cards.json'
-import cardClassesJson from '../../data/card_classes.json'
-import { CardModel } from "./creatures/creature.model"
-import { FamilyModel } from "./families/family.model"
+import cardsJson from '../data/cards.json'
+import cardClassesJson from '../data/card_classes.json'
+import { CardModel } from "./data/creature.model"
+import { FamilyModel } from "./data/family.model"
 
 let database: Mongoose.Connection
 
@@ -46,6 +46,10 @@ export const disconnectDB = () => {
     return
   }  
   Mongoose.disconnect()
+}
+
+export const dropDB = async () => {
+  await database.db.dropDatabase()
 }
 
 const createData = async () => {

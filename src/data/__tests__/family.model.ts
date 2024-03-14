@@ -9,10 +9,10 @@ afterAll(async () => {
   await disconnectDB()
 })
 
-describe('CardClassModel', () => {
+describe('FamilyModel', () => {
   it('can be created', async () => {
-    const name = "FakeClassName"
-    const description = "FakeClass Description"
+    const name = "FakeFamilyName"
+    const description = "FakeFamily Description"
 
     const doc = await FamilyModel.create({name, description})
 

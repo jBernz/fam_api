@@ -1,5 +1,5 @@
 import { getModelForClass, modelOptions, prop, Ref } from "@typegoose/typegoose"
-import { Card } from "../cards/card.model"
+import { Card } from "./card.model"
 
 @modelOptions({ schemaOptions: {} })
 export class Creature {

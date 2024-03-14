@@ -1,9 +1,9 @@
 import express from 'express'
 import cors from 'cors'
 import {Express} from 'express-serve-static-core'
-import familes from "./api/families/router"
-import cards from "./api/cards/router"
-import tags from "./api/tags/router"
+import familes from "./integration/family.api"
+import cards from "./integration/router"
+import tags from "./integration/tags.api"
 
 export async function createServer(): Promise<Express> {
   const server = express()

@@ -1,5 +1,4 @@
-import express from "express"
-import { connectDB } from "./database/database"
+import { connectDB } from "./database"
 import dotenv from "dotenv"
 import {createServer} from './server'
 

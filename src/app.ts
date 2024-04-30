@@ -6,6 +6,7 @@ import { FamilyModel } from "./data/family.model"
 import { TagModel } from "./data/tag.model"
 import { CardService } from "./service/card.service"
 import { DefaultService } from "./service/default.service"
+import { CardModel } from "./data/card.model"
 
 dotenv.config()
 
@@ -16,6 +17,8 @@ const routers = {
   '/tags': DefaultRouter(DefaultService(TagModel)),
   '/cards': DefaultRouter(CardService)
 }
+
+console.log(CardModel.discriminators)
 
 connectDB()
   .then( () => createServer(routers))

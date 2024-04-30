@@ -3,6 +3,8 @@ import { connectDB, disconnectDB, dropDB } from '../../database'
 import { DefaultService } from '../default.service'
 import sinon from 'ts-sinon'
 
+//TODO add actual mocked models
+
 class Mock {
   @prop()
   public a: string; 

@@ -5,6 +5,8 @@ import { FamilyModel } from '../../data/family.model'
 import { TagModel } from '../../data/tag.model'
 import { CardType } from 'fam-types'
 
+//TODO add actual mocked models
+
 const mockCard = {
   name: 'a',
   memory: 0
@@ -60,7 +62,7 @@ describe('CardService', () => {
   describe('postDocument', () => {
     it('saves a card model of the corresponding type', async () => {
       const card = {...mockCard, type: CardType.Feature}
-      await CardService.postDocument(card)
+      await CardService.postDocument(CardService.createDocument,CardService.updateDocument)(card)
       const count = await FeatureCardModel.countDocuments()
       expect(count).toEqual(1)
     })

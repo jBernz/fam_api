@@ -5,10 +5,10 @@ const getAllDocuments = async () => {
   return await CardModel.find({}).populate('family').populate('tags').exec()
 }
 
-const postDocument = async (payload) => {
+const postDocument = (create, update) => async (payload) => {
   const cardModel = payload.type ? cardTypes[payload.type] : CardModel
   const defaultService = DefaultService(cardModel)
-  return await defaultService.postDocument(defaultService.createDocument, defaultService.updateDocument)(payload)
+  return await defaultService.postDocument(create, update)(payload)
 }
 
 export const CardService = {
